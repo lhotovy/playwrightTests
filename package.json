@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "testui": "npx playwright test --ui",
+    "gen": "npx playwright codegen"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lhotovy/playwrightTests.git"
@@ -16,6 +20,7 @@
   "homepage": "https://github.com/lhotovy/playwrightTests#readme",
   "devDependencies": {
     "@playwright/test": "^1.39.0",
-    "@types/node": "^20.8.7"
+    "@types/node": "^20.8.7",
+    "playwright": "^1.41.0"
   }
 }
