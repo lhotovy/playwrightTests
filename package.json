@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npx playwright test",
     "testui": "npx playwright test --ui",
-    "gen": "npx playwright codegen"
+    "gen": "npx playwright codegen https://websters-eshop.vercel.app/"
   },
   "repository": {
     "type": "git",

@@ -5,7 +5,7 @@ import LandingPage from "../POM/landing";
 test.describe("Testing landing page", () => {
   test.beforeEach(async ({ page }) => {
     
-    await page.goto('https://websters-eshop.vercel.app/');
+    await page.goto('/');
   });
 
   test('Testing presence of elements on landing page', async ({ page }) => {   

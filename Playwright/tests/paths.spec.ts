@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
 import Cart from "../POM/cart";
 import LandingPage from "../POM/landing";
-
+import data from "../testData/user.json";
 
 test.describe("Testing paths through applicaton", () => {
   test.beforeEach(async ({ page }) => {    
-    await page.goto('https://websters-eshop.vercel.app/');
+    await page.goto('/');    
   });
 
   test('Put items to cart, navigate to cart and verify amounts', async ({ page }) => {   
@@ -34,5 +34,16 @@ test.describe("Testing paths through applicaton", () => {
     await expect(page.getByText('€300', {exact: true})).toBeVisible();
     await expect(page.getByText('€30', {exact: true})).toBeVisible();
     await expect(page.locator('[data-test="subtotal"]')).toContainText('Subtotal: €430');
+  });
+
+  test('Testing login', async ({ page }) => {  
+      const{ mail, password } = data;
+      await page.getByRole('button', { name: 'Login' }).click();
+      await page.getByLabel('Email').click();
+      await page.getByLabel('Email').fill(mail);
+      await page.getByLabel("Password").click();
+      await page.getByLabel("Password").fill(password);
+      await page.getByRole('button', { name: 'Log In', exact: true }).click();
+      await expect(page.getByText("Logged in Successfully!")).toBeVisible();
   });
 });
