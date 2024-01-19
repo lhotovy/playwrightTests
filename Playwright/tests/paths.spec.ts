@@ -5,7 +5,7 @@ import data from "../testData/user.json";
 
 test.describe("Testing paths through applicaton", () => {
   test.beforeEach(async ({ page }) => {    
-    await page.goto('/');    
+    await page.goto('https://websters-eshop.vercel.app/');    
   });
 
   test('Put items to cart, navigate to cart and verify amounts', async ({ page }) => {   
@@ -37,12 +37,12 @@ test.describe("Testing paths through applicaton", () => {
   });
 
   test('Testing login', async ({ page }) => {  
-      const{ mail, password } = data;
+      //const{ mail, password } = data;      
       await page.getByRole('button', { name: 'Login' }).click();
       await page.getByLabel('Email').click();
-      await page.getByLabel('Email').fill(mail);
+      await page.getByLabel('Email').fill(process.env.USER!);
       await page.getByLabel("Password").click();
-      await page.getByLabel("Password").fill(password);
+      await page.getByPlaceholder('Doe', { exact: true }).fill(process.env.PASSWORD!);
       await page.getByRole('button', { name: 'Log In', exact: true }).click();
       await expect(page.getByText("Logged in Successfully!")).toBeVisible();
   });
