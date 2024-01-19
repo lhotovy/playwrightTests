@@ -37,14 +37,14 @@ test.describe("Testing paths through applicaton", () => {
   });
 
   test('Testing login', async ({ page }) => {  
-      const{ mail, password } = data;      
+      const { mail, password } = data;            
       await page.getByRole('button', { name: 'Login' }).click();
       await page.getByLabel('Email').click();
       //await page.getByLabel('Email').fill(process.env.USER!);
       await page.getByLabel('Email').fill(mail);
       await page.getByLabel("Password").click();
       //await page.getByPlaceholder('Doe', { exact: true }).fill(process.env.PASSWORD!);
-      await page.getByLabel('Email').fill(password);
+      await page.getByLabel('Password').fill(password);
       await page.getByRole('button', { name: 'Log In', exact: true }).click();
       await expect(page.getByText("Logged in Successfully!")).toBeVisible();
   });
