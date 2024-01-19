@@ -35,34 +35,36 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    // {
-    //   name: 'setup',
-    //   testMatch: "**/*.setup.ts",
-    // },
+    {
+      name: 'setup',
+      testMatch: /login\.setup\.ts/,
+    },
 
-    // {
-    //   name: 'e2e test with login',
-    //   testMatch: "**/*.loggedin.spec.ts",
-    //   dependencies: ["setup"],
-    //   use: {
-    //     storageState: STORAGE_STATE
-    //   }
-    // },
+    {
+      name: 'e2e test with login',
+      testMatch: "**/*.loggedin.spec.ts",
+      dependencies: ['setup'],
+      use: {
+        ...devices['chromium'],
+        storageState: STORAGE_STATE
+      }
+    },
 
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      testIgnore: "**/*.loggedin.spec.ts",
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
