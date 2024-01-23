@@ -1,6 +1,4 @@
-import { test, expect } from '@playwright/test';
-import Cart from "../POM/cart";
-import LandingPage from "../POM/landing";
+import { test, expect } from '../fixtures/webster-app';
 import data from "../testData/user.json";
 
 test.describe("Testing paths through applicaton", () => {
@@ -8,12 +6,10 @@ test.describe("Testing paths through applicaton", () => {
     await page.goto('https://websters-eshop.vercel.app/');    
   });
 
-  test('Put items to cart, navigate to cart and verify amounts', async ({ page }) => {   
-    const landing = new LandingPage(page);   
-    const cart = new Cart(page);
+  test('Put items to cart, navigate to cart and verify amounts', async ({ page, cart, landingPage }) => {   
     
     // Navigate to E-shop and add items to cart
-    await landing.goToEshop.click();
+    await landingPage.goToEshop.click();
     await expect(cart.addToCart).toHaveCount(6)
     await cart.addToCart.nth(1).click();
     await cart.addToCart.nth(1).click();

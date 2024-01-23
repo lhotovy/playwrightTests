@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test",
+    "test": "npx playwright test --workers 4",
     "testui": "npx playwright test --ui",
     "gen": "npx playwright codegen https://websters-eshop.vercel.app/"
   },
