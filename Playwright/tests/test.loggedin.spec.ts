@@ -5,5 +5,5 @@ test.beforeEach(async ({page}) => {
 });
 
 test('Should continue in logged in state', async ({page}) => {
-    //await page.getByRole("button", { name: "Save Changes"}).click();
+    await expect(page.locator("button", {hasText: "Logout"})).toBeVisible();
 });

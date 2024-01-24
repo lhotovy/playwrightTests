@@ -12,6 +12,7 @@ export const STORAGE_STATE = path.join(__dirname, 'playwright/.auth/user.json');
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  //globalSetup: "./Playwright/tests/global-setup",
   testDir: './Playwright/tests',
   outputDir: "./Playwright/test-results",
   /* Run tests in files in parallel */
@@ -30,14 +31,15 @@ export default defineConfig({
     baseURL: 'https://websters-eshop.vercel.app',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry'
+    trace: 'on-first-retry',
+    //storageState: "./loginAuth.json"
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'setup',
-      testMatch: /login\.setup\.ts/,
+      testMatch: "**/login-setup.ts",
     },
 
     {
